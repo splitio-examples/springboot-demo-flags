@@ -12,11 +12,13 @@ public class Reservation {
     private final String email;
     private final int quantity;
 
-    public Reservation(UUID id,
-                       @JsonProperty("date") LocalDate date,
-                       @JsonProperty("name") String name,
-                       @JsonProperty("email") String email,
-                       @JsonProperty("quantity") int quantity) {
+    public Reservation(
+        UUID id,
+        @JsonProperty("date") LocalDate date,
+        @JsonProperty("name") String name,
+        @JsonProperty("email") String email,
+        @JsonProperty("quantity") int quantity
+    ) {
         this.id = id;
         this.date = date;
         this.name = name;
