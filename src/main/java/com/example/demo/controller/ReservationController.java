@@ -50,7 +50,7 @@ public class ReservationController {
         if (errorMessage.isPresent()) {
             String error = errorMessage.get();
             String message = "";
-            HttpStatus status = HttpStatus.OK;
+            HttpStatus status = HttpStatus.CREATED;
 
             if (error.equals("no-seats")) {
                 message = "Couldn't accept: there aren't enough seats available.";
