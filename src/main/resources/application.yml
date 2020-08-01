@@ -1,0 +1,7 @@
+split:
+  api:
+    token: <your split api token>
+    treatment-name: VALIDATE_DATE
+server:
+  error:
+    include-message: always

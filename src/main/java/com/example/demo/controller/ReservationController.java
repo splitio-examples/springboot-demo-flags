@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Reservation;
+import com.example.demo.service.ReservationService;
 import com.example.demo.service.ReservationServiceImpl;
 import io.split.client.SplitClient;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,13 +16,13 @@ import java.util.Optional;
 @RequestMapping("api/reservations")
 public class ReservationController {
 
-    @Value("#{ @environment['split.api.token'] }")
-    private String apiToken;
+    @Value("#{ @environment['split.api.treatement-name'] }")
+    private String treatmentName;
 
-    private final ReservationServiceImpl reservationService;
+    private final ReservationService reservationService;
     private final SplitClient splitClient;
 
-    public ReservationController(ReservationServiceImpl reservationService, SplitClient splitClient) {
+    public ReservationController(ReservationService reservationService, SplitClient splitClient) {
         this.reservationService = reservationService;
         this.splitClient = splitClient;
     }
@@ -34,7 +35,7 @@ public class ReservationController {
     @PostMapping
     public void addNewReservation(@RequestBody Reservation reservation) {
 
-        String treatment = splitClient.getTreatment(apiToken,"VALIDATE-DATE");
+        String treatment = splitClient.getTreatment("ANONYMOUS_USER",treatmentName);
         boolean validateAgainstPastDate;
 
         if (treatment.equals("on")) {
