@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class ReservationsAPIConfig {
 
     @Value("#{ @environment['split.api.key'] }")
-    private String apiToken;
+    private String apiKey;
 
     @Bean
     public SplitClient splitClient() throws Exception {
@@ -21,7 +21,7 @@ public class ReservationsAPIConfig {
             .enableDebug()
             .build();
 
-        SplitFactory splitFactory = SplitFactoryBuilder.build(apiToken, config);
+        SplitFactory splitFactory = SplitFactoryBuilder.build(apiKey, config);
         SplitClient client = splitFactory.client();
         client.blockUntilReady();
 
