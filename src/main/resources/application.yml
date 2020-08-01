@@ -1,6 +1,6 @@
 split:
   api:
-    token: <your split api token>
+    key: <your split api key>
     treatment-name: VALIDATE_DATE
 server:
   error:

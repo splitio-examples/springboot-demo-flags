@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ReservationsAPIConfig {
 
-    @Value("#{ @environment['split.api.token'] }")
+    @Value("#{ @environment['split.api.key'] }")
     private String apiToken;
 
     @Bean
